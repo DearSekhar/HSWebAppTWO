@@ -16,8 +16,9 @@ name: Deploy HSWebAppTwo app to GKE
 
 on:
   push:
-    branches:
-    - main
+    #branches:
+    #- main
+    branches: [ "master" ]    
 
 env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
