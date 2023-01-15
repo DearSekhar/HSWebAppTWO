@@ -47,7 +47,6 @@ jobs:
       with:
         token_format: "access_token"
         create_credentials_file: true
-        activate_credentials_file: true      
         workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER_ID }} #'projects/549315440769/locations/global/workloadIdentityPools/my-pool/providers/my-provider'
         service_account: ${{ secrets.SERVICE_ACCOUNT }} #'saChandraProlifics@sincere-actor-374621.iam.gserviceaccount.com' # 'my-service-account@my-project.iam.gserviceaccount.com'
 
