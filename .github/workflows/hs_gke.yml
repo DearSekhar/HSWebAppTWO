@@ -45,7 +45,7 @@ jobs:
       name: 'Authenticate to Google Cloud'
       uses: 'google-github-actions/auth@v1'
       with:
-        workload_identity_provider: 'projects/sincere-actor-374621/locations/global/workloadIdentityPools/my-pool/providers/my-provider'
+        workload_identity_provider: 'projects/549315440769/locations/global/workloadIdentityPools/my-pool/providers/my-provider'
         service_account: 'saChandraProlifics@sincere-actor-374621.iam.gserviceaccount.com' # 'my-service-account@my-project.iam.gserviceaccount.com'
 
     # Alternative option - authentication via credentials json
