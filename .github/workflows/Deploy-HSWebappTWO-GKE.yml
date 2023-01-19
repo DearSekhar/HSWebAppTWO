@@ -1,4 +1,5 @@
-name: Deploy-HSWebappTWO-GKE
+name: Deploy HSWebAppTwo app to Google kubernetes Engine
+
 
 on: [workflow_dispatch]
 
