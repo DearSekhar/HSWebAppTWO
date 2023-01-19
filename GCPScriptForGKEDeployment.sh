@@ -55,7 +55,7 @@ gcloud projects add-iam-policy-binding $GKE_PROJECT \
 # Download JSON
 gcloud iam service-accounts keys create key.json --iam-account=$GKE_SVC_MAIL
 # Build and push the docker image
-docker build --tag "$GKE_REGION-docker.pkg.dev/$GKE_PROJECT/$GKE_PROJECT/$GKE_APP_NAME:$GITHUB_SHA" HSWebAppTWO/HSWebAppTWO/
+docker build --tag "$GKE_REGION-docker.pkg.dev/$GKE_PROJECT/$GKE_PROJECT/$GKE_APP_NAME:$GITHUB_SHA" HSWebAppTWO/
 gcloud auth configure-docker $GKE_REGION-docker.pkg.dev --quiet
 docker push "$GKE_REGION-docker.pkg.dev/$GKE_PROJECT/$GKE_PROJECT/$GKE_APP_NAME:$GITHUB_SHA"
 # Create deployment
