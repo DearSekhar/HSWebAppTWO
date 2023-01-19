@@ -78,7 +78,7 @@ echo ""
 #docker build --tag "$GKE_REGION-docker.pkg.dev/$GKE_PROJECT/$GKE_PROJECT/$GKE_APP_NAME:$GITHUB_SHA" HSWebAppTWO/HSWebAppTWO/
 #docker build --tag "$GKE_REGION-docker.pkg.dev/$GKE_PROJECT/$GKE_PROJECT/$GKE_APP_NAME:$GITHUB_SHA" src/Tailwind.Traders.Web/
 #docker build --tag \
-  "$GKE_REGION-docker.pkg.dev/$GKE_PROJECT/$GKE_PROJECT/$GKE_APP_NAME:$GITHUB_SHA" \
-  src/Tailwind.Traders.Web/
+#  "$GKE_REGION-docker.pkg.dev/$GKE_PROJECT/$GKE_PROJECT/$GKE_APP_NAME:$GITHUB_SHA" \
+#  src/Tailwind.Traders.Web/
 #envsubst < src/Tailwind.Traders.Web/Deployment.yml | kubectl apply -f -
 #envsubst < src/Tailwind.Traders.Web/Service.yml | kubectl apply -f -
