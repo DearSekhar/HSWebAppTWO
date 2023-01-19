@@ -12,10 +12,8 @@ env:
   GKE_DEPLOYMENT_NAME: hschan-demo-webapp1-deployment
   GKE_REGION: us-central1
   GKE_ZONE: us-central1-c
-  
-
-# Just a placeholder for the first deployment
-export GITHUB_SHA=Test
+ # Just a placeholder for the first deployment
+  GITHUB_SHA: Test
 
 
   
