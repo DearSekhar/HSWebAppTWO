@@ -88,8 +88,8 @@ jobs:
 
     # Deploy the new Docker image to the GKE cluster
     - name: Deploy
-      working-directory: HSWebAppTWO
+      working-directory: ./
       run: |-
-        envsubst < ./Deployment.yml | kubectl apply -f -
-        envsubst < ./Service.yml | kubectl apply -f -
+        envsubst < Deployment.yml | kubectl apply -f -
+        envsubst < Service.yml | kubectl apply -f -
 
