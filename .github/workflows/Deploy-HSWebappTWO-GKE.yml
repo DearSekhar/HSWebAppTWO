@@ -52,7 +52,7 @@ jobs:
 
     # Build the Docker image
     - name: Build and Push
-      working-directory: HSWebAppTWO
+      working-directory: ./
       run: |-  
         docker build \
           --tag "$GKE_REGION-docker.pkg.dev/$GKE_PROJECT/$GKE_PROJECT/$GKE_APP_NAME:$GITHUB_SHA" \
