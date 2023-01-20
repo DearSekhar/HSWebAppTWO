@@ -66,6 +66,11 @@ jobs:
     runs-on: ubuntu-latest
     environment: prod
     needs: Build
+    
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+    
 
     steps:
     - name: Checkout
@@ -78,6 +83,12 @@ jobs:
     #    project_id: ${{ secrets.GKE_PROJECT }}
     #    export_default_credentials: true 
 
+
+    - id: 'auth'
+      uses: 'google-github-actions/auth@v1'
+      with:
+        workload_identity_provider: 'projects/549315440769/locations/global/workloadIdentityPools/github-wif-pool/providers/githubwif'
+        service_account: 'hschan-serviceaccount@sincere-actor-374621.iam.gserviceaccount.com'
 
     # Get the GKE credentials so we can deploy to the cluster
     - id: 'get-credentials'
