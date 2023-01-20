@@ -22,6 +22,11 @@ jobs:
   Build:
     runs-on: ubuntu-latest
 
+    # Add "id-token" with the intended permissions.
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+      
     steps:
     - name: Checkout
       uses: actions/checkout@v3
