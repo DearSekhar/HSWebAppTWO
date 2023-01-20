@@ -1,8 +1,8 @@
 name: Deploy HSWebAppTwo app to Google kubernetes Engine
 
-
 on: [workflow_dispatch]
-
+  #push:
+   # branches: [ "master" ]  
 env:
   GKE_PROJECT: ${{ secrets.GKE_PROJECT }}
   GKE_CLUSTER: hschan-demo-cluster
@@ -14,15 +14,11 @@ env:
   GKE_ZONE: us-central1-c
  # Just a placeholder for the first deployment
   GITHUB_SHA: Test
-
-
-  
   
 jobs:
   Build:
     runs-on: ubuntu-latest
 
-    # Add "id-token" with the intended permissions.
     permissions:
       contents: 'read'
       id-token: 'write'
@@ -31,14 +27,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    # Setup gcloud CLI
-    #- uses: google-github-actions/setup-gcloud@v0.6.0
-    #  with:
-    #    service_account_key: ${{ secrets.GKE_SA_KEY }}
-    #    project_id: ${{ secrets.GKE_PROJECT }}
-    #    export_default_credentials: true 
-        
-        
     # Configure Workload Identity Federation and generate an access token.
     - id: 'auth'
       name: 'Authenticate to Google Cloud'
@@ -49,7 +37,6 @@ jobs:
         workload_identity_provider: 'projects/549315440769/locations/global/workloadIdentityPools/github-wif-pool/providers/githubwif'
         service_account: 'hschan-serviceaccount@sincere-actor-374621.iam.gserviceaccount.com'
         
-
     # Build the Docker image
     - name: Build and Push
       working-directory: ./
@@ -70,19 +57,10 @@ jobs:
     permissions:
       contents: 'read'
       id-token: 'write'
-    
 
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-
-    # Setup gcloud CLI
-    #- uses: google-github-actions/setup-gcloud@v0.6.0
-    #  with:
-    #    service_account_key: ${{ secrets.GKE_SA_KEY }}
-    #    project_id: ${{ secrets.GKE_PROJECT }}
-    #    export_default_credentials: true 
-
 
     - id: 'auth'
       uses: 'google-github-actions/auth@v1'
@@ -96,7 +74,6 @@ jobs:
       with:
         cluster_name: ${{ env.GKE_CLUSTER }}
         location: ${{ env.GKE_ZONE }}
-    #    credentials: ${{ secrets.GKE_SA_KEY }}
 
     # The KUBECONFIG env var is automatically exported and picked up by kubectl.
     - id: 'get-pods'
@@ -107,5 +84,4 @@ jobs:
       working-directory: ./
       run: |-
         envsubst < service.yml | kubectl apply -f -
-        envsubst < deployment.yml | kubectl apply -f -        
-
+        envsubst < deployment.yml | kubectl apply -f -
